@@ -1,43 +1,52 @@
-package LottoGame;
+package app.LottoGame;
+
+import app.Game;
 
 import java.util.*;
 
-import static LottoGame.ConsoleMessages.*;
+import static app.LottoGame.ConsoleMessages.*;
 
-public class LottoGame
+public class LottoGame implements Game
 {
     private final Scanner sc = new Scanner(System.in);
     private TreeSet<Integer> chosenNumbers, winningNumbers;
 
+    //chosenNumbers nie może być null;
+    public LottoGame(){
+        chosenNumbers = new TreeSet<>();
+    }
 
-    public void PlayLotto()
+    public void play()
     {
         ResetCurrentNumberIndex();
-        chosenNumbers = new TreeSet<>();
 
-        retrieveNumbersFromUser();
-
+        chosenNumbers = retrieveNumbersFromUser();
         winningNumbers = WinningNumbersGenerator.getWinningNumbersFromRange(1, 100);
 
-        System.out.println("");
+        printUserAndWinningNumbers();
 
+        makeCommunicat("Udało się trafić " + howManyNumbersMatch() + " liczb");
+    }
+
+    private void printUserAndWinningNumbers(){
+        System.out.println("");
         printNumbers(chosenNumbers);
         printNumbers(winningNumbers);
-
-        makeCommunicat("Udało się trafić " + howManyCorrectNumbers() + " liczb");
     }
 
-    private void retrieveNumbersFromUser()
+    private TreeSet<Integer> retrieveNumbersFromUser()
     {
-        while (chosenNumbers.size() < 6)
+        TreeSet<Integer> numbersFromUser = new TreeSet<>();
+        while (numbersFromUser.size() < 6)
         {
-            int chosenNumber = retrieveValidNumberFromUser();
-            chosenNumbers.add(chosenNumber);
+            //int chosenNumber = userInput();
+            numbersFromUser.add(userInput());
         }
         sc.close();
+        return numbersFromUser;
     }
 
-    private int retrieveValidNumberFromUser()
+    private int userInput()
     {
         do
         {
@@ -55,7 +64,7 @@ public class LottoGame
 
     }
 
-    private int howManyCorrectNumbers()
+    private int howManyNumbersMatch()
     {
         int howManyCorrectNumbers = 0;
         for (int n : chosenNumbers)
