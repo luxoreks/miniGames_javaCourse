@@ -1,8 +1,8 @@
-package LottoGame;
+package app.LottoGame;
 
 import java.util.TreeSet;
 
-import static LottoGame.ConsoleMessages.*;
+import static app.LottoGame.ConsoleMessages.*;
 
 public class InputChecker
 {

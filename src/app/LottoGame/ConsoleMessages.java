@@ -1,4 +1,4 @@
-package LottoGame;
+package app.LottoGame;
 
 import java.util.TreeSet;
 

@@ -1,4 +1,4 @@
-package LottoGame;
+package app.LottoGame;
 
 import java.util.*;
 
@@ -11,7 +11,7 @@ public class WinningNumbersGenerator
         TreeSet<Integer> winningNumbers = new TreeSet<>();
         while (winningNumbers.size() < 6)
         {
-            int number = rnd.nextInt(min, max); //preferowany zakres liczb od 1 do 99
+            int number = rnd.nextInt(min, max);
             winningNumbers.add(number);
         }
 
