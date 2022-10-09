@@ -39,14 +39,13 @@ public class LottoGame implements Game
         TreeSet<Integer> numbersFromUser = new TreeSet<>();
         while (numbersFromUser.size() < 6)
         {
-            //int chosenNumber = userInput();
-            numbersFromUser.add(userInput());
+            numbersFromUser.add(userValidNumberInput());
         }
         sc.close();
         return numbersFromUser;
     }
 
-    private int userInput()
+    private int userValidNumberInput()
     {
         do
         {
@@ -61,7 +60,6 @@ public class LottoGame implements Game
             }
         }
         while(true);
-
     }
 
     private int howManyNumbersMatch()
